@@ -1,0 +1,41 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.formatOnType": true,
+		"editor.formatOnSaveMode": "modificationsIfAvailable",
+		"editor.acceptSuggestionOnEnter": "on",
+		"editor.autoSurround": "brackets",
+		"editor.bracketPairColorization.enabled": true,
+		"editor.linkedEditing": true,
+		"editor.tabCompletion": "on",
+		"editor.tabSize": 2,
+		"editor.renderWhitespace": "boundary",
+		"editor.suggest.shareSuggestSelections": true,
+		"editor.suggestSelection": "first",
+		"editor.semanticHighlighting.enabled": true,
+		"explorer.confirmDelete": true,
+
+		"files.autoSave": "onFocusChange",
+		"files.exclude": {
+			"**/.classpath": true,
+			"**/.factorypath": true,
+			"**/.project": true,
+			"**/.settings": true
+		},
+		"files.trimFinalNewlines": true,
+		"files.trimTrailingWhitespace": true,
+
+		"task.saveBeforeRun": "always",
+	},
+	"extensions": {
+		"recommendations": [
+			"golang.go",
+			"k6.k6",
+			"mechatroner.rainbow-csv"
+		]
+	}
+}
