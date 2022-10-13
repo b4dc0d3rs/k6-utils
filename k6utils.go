@@ -7,10 +7,10 @@ import (
 )
 
 func init() {
-    modules.Register("k6/x/k6utils", new(K6Utils))
+	modules.Register("k6/x/k6utils", new(K6Utils))
 }
 
-type K6Utils struct{
+type K6Utils struct {
 }
 
 func (c *K6Utils) SleepMilliseconds(sleepMilliseconds int) {
