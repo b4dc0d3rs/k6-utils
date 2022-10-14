@@ -45,9 +45,10 @@ func (k6utils *K6Utils) Load(filePath string, separator []byte) (interface{}, er
 		}
 
 		if err != nil {
-			return nil, err
+			return nil, fmt.Errorf("%s", err)
 		}
 
+		// skip empty lines
 		if len(record) == 0 {
 			continue
 		}
