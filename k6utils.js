@@ -6,5 +6,6 @@ export default function () {
   const data = k6utils.load('data.csv', ',');
 
   console.log(data[0].userId);
+  console.log(data.length === 2);
   console.log(k6utils.takeRandomRow())
 }
