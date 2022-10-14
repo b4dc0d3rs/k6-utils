@@ -48,6 +48,10 @@ func (k6utils *K6Utils) Load(filePath string, separator []byte) (interface{}, er
 			return nil, err
 		}
 
+		if len(record) == 0 {
+			continue
+		}
+
 		dict := map[string]string{}
 		for i := range record {
 			dict[header[i]] = record[i]
