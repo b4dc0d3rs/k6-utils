@@ -1,4 +1,4 @@
-package compare
+package k6utils
 
 import (
 	"time"
@@ -11,6 +11,7 @@ func init() {
 }
 
 type K6Utils struct {
+	csvRecords []map[string]string
 }
 
 func (c *K6Utils) SleepMilliseconds(sleepMilliseconds int) {
