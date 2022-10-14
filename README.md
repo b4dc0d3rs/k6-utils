@@ -11,7 +11,7 @@ import k6utils from 'k6/x/k6utils';
 
 ## sleepMilliseconds
 ```ts
-  k6utils.sleepMilliseconds(666);
+k6utils.sleepMilliseconds(666);
 ```
 ## CSV operator
 
