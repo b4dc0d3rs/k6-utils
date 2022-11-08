@@ -8,18 +8,43 @@ import (
 	"os"
 )
 
-func (k6utils *K6Utils) TakeRandomRow() (interface{}, error) {
+func (k6utils *K6Utils) TakeRandomRow() (map[string]string, error) {
 	if k6utils.csvRecords == nil || len(k6utils.csvRecords) == 0 {
 		return nil, fmt.Errorf("%s", "List of CSV records not loaded, call Load method first")
 	}
 
 	randomIndex := rand.Intn(len(k6utils.csvRecords))
-	return k6utils.csvRecords[randomIndex], nil
+
+	record := k6utils.csvRecords[randomIndex]
+	dict := map[string]string{}
+	for i := range record {
+		dict[k6utils.header[i]] = record[i]
+	}
+
+	return dict, nil
+}
+
+func (k6utils *K6Utils) TakeRowByIndex(index int) (map[string]string, error) {
+	if k6utils.csvRecords == nil || len(k6utils.csvRecords) == 0 {
+		return nil, fmt.Errorf("%s", "List of CSV records not loaded, call Load method first")
+	}
+
+	if index < 0 || index > len(k6utils.csvRecords) {
+		return nil, fmt.Errorf("Invalid index %d. CSV feed has %d rows", index, len(k6utils.csvRecords))
+	}
+
+	record := k6utils.csvRecords[index]
+	dict := map[string]string{}
+	for i := range record {
+		dict[k6utils.header[i]] = record[i]
+	}
+
+	return dict, nil
 }
 
 func (k6utils *K6Utils) Load(filePath string, separator []byte) (interface{}, error) {
 
-	if len(separator) == 0 {;
+	if len(separator) == 0 {
 		return nil, fmt.Errorf("%s", "Separator not valid")
 	}
 
@@ -30,13 +55,14 @@ func (k6utils *K6Utils) Load(filePath string, separator []byte) (interface{}, er
 
 	reader := csv.NewReader(file)
 
-	header, err :=	reader.Read();
+	header, err := reader.Read()
+	k6utils.header = header
 
 	if err != nil {
 		return nil, fmt.Errorf("%s", err)
 	}
 
-	k6utils.csvRecords = []map[string]string{}
+	k6utils.csvRecords = [][]string{}
 
 	for {
 		record, err := reader.Read()
@@ -53,12 +79,7 @@ func (k6utils *K6Utils) Load(filePath string, separator []byte) (interface{}, er
 			continue
 		}
 
-		dict := map[string]string{}
-		for i := range record {
-			dict[header[i]] = record[i]
-		}
-		k6utils.csvRecords = append(k6utils.csvRecords, dict)
-
+		k6utils.csvRecords = append(k6utils.csvRecords, record)
 	}
 
 	file.Close()

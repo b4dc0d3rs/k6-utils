@@ -11,7 +11,8 @@ func init() {
 }
 
 type K6Utils struct {
-	csvRecords []map[string]string
+	csvRecords [][]string
+	header []string
 }
 
 func (c *K6Utils) SleepMilliseconds(sleepMilliseconds int) {
