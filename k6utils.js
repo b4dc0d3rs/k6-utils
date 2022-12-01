@@ -7,7 +7,9 @@ export default function () {
 
   console.log(`Rows: ${data[0]}`);
   console.log(`Should have two rows: ${data.length === 2}`);
-  console.log(k6utils.takeRandomRow())
-  console.log(k6utils.takeRowByIndex(0))
-  console.log(k6utils.takeRowByIndex(45))
+  console.log(`Random row: ${JSON.stringify(k6utils.takeRandomRow())}`)
+  console.log(`Row by index: ${JSON.stringify(k6utils.takeRowByIndex(0))}`)
+
+  console.log(`Polling row: ${JSON.stringify(k6utils.pollRandomRow())}`)
+  console.log(`Should have two rows: ${data.length === 2}`);
 }
