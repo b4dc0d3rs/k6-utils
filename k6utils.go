@@ -3,6 +3,7 @@ package k6utils
 import (
 	"time"
 
+	"github.com/patrickmn/go-cache"
 	"go.k6.io/k6/js/modules"
 )
 
@@ -13,6 +14,7 @@ func init() {
 type K6Utils struct {
 	csvRecords [][]string
 	header []string
+	cache *cache.Cache
 }
 
 func (c *K6Utils) SleepMilliseconds(sleepMilliseconds int) {

@@ -2,6 +2,14 @@
 
 A bunch of random functions for k6 performance testing that I found missing, but useful in our work.
 
+# Compile for development
+```sh
+xk6 build v0.41.0 \
+  --with github.com/b4dc0d3rs/k6-utils=.
+
+./k6 run k6utils.js
+```
+
 # Use
 
 Just import:

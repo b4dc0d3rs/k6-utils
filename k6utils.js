@@ -1,8 +1,6 @@
 import k6utils from 'k6/x/k6utils';
 
 export default function () {
-  k6utils.sleepMilliseconds(666);
-
   const data = k6utils.load('data.csv', ',');
 
   console.log(`Rows: ${data[0]}`);
@@ -12,4 +10,11 @@ export default function () {
 
   console.log(`Polling row: ${JSON.stringify(k6utils.pollRandomRow())}`)
   console.log(`Should have two rows: ${data.length === 2}`);
+
+  k6utils.createCache(1)
+  k6utils.set('key', 'value')
+
+  k6utils.sleepMilliseconds(1200);
+
+  console.log(`Expecting key-value to expire, should be undefined: ${k6utils.set('key')}`)
 }
