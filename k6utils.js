@@ -11,10 +11,10 @@ export default function () {
   console.log(`Polling row: ${JSON.stringify(k6utils.pollRandomRow())}`)
   console.log(`Should have two rows: ${data.length === 2}`);
 
-  k6utils.createCache(1)
-  k6utils.set('key', 'value')
+  k6utils.createCacheWithExpiryInSeconds(1)
+  k6utils.putToCache('key', 'value')
 
   k6utils.sleepMilliseconds(1200);
 
-  console.log(`Expecting key-value to expire, should be undefined: ${k6utils.set('key')}`)
+  console.log(`Expecting key-value to expire, should be null: ${k6utils.getFromCache('key')}`)
 }
