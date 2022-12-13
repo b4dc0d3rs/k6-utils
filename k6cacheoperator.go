@@ -19,3 +19,7 @@ func (k6utils *K6Utils) GetFromCache(key string) interface{} {
 	stringValue, _ := k6utils.cache.Get(key)
 	return stringValue
 }
+
+func (k6utils *K6Utils) RemoveFromCache(key string) {
+	k6utils.cache.Delete(key)
+}
