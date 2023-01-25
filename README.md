@@ -34,6 +34,8 @@ data[0].csvColumnName;
 Returns random record from the CSV map. Load
 ```js
 const allRows = k6utils.load('data.csv', ',');
+
+// a row can be returned many times
 const oneRandomRow = k6utils.takeRandomRow();
 
 const row5 = k6utils.takeRowByIndex(4)
