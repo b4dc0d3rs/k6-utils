@@ -6,7 +6,7 @@
 *.dylib
 k6
 xk6
-
+.idea
 # Test binary, built with `go test -c`
 *.test
 

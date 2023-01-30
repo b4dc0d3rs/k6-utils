@@ -2,7 +2,6 @@ package k6utils
 
 import (
 	"time"
-
 	"github.com/patrickmn/go-cache"
 )
 
